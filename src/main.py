@@ -2,7 +2,7 @@ from fastapi import FastAPI
 
 app = FastAPI()
 
-@app.get("/hello")
+@app.get("/helloapi")
 async def root():
     return {
             "hostname": "server1",
