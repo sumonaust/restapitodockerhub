@@ -1,0 +1,26 @@
+name: Deploy To EKS
+
+on:
+  pull_request:
+    branches: "main"
+  
+jobs:
+    build:
+      name: Pull Docker image from Docker Hub
+      runs-on: self-hosted
+      steps:
+        - name: Checkout Repository
+          uses: actions/checkout@v2
+
+        - name: Pull the Docker image
+          run: docker pull sumonaust/restapi:latest
+
+  
+        - name: Update kubeconfig
+          run: aws eks --region us-east-1 update-kubeconfig --name EKS_cluster_restapi
+  
+        - name: Deploy to EKS
+          run: kubectl apply -f deployment-service.yml 
+  
+  
+  
