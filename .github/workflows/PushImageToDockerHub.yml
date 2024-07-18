@@ -20,4 +20,4 @@ jobs:
         with:
           context: src/
           push: true
-          tags: sumonaust/restapi:latest2
+          tags: sumonaust/restapi:latest
